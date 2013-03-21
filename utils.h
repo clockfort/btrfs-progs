@@ -19,6 +19,7 @@
 #ifndef __UTILS__
 #define __UTILS__
 
+#include <sys/stat.h>
 #include "ctree.h"
 
 #define BTRFS_MKFS_SYSTEM_GROUP_SIZE (4 * 1024 * 1024)
@@ -56,6 +57,7 @@ int get_fs_info(int fd, char *path, struct btrfs_ioctl_fs_info_args *fi_args,
 
 char *__strncpy__null(char *dest, const char *src, size_t n);
 int is_swap_device(const char *file);
+u64 btrfs_device_size(int fd, struct stat *st);
 /* Helper to always get proper size of the destination string */
 #define strncpy_null(dest, src) __strncpy__null(dest, src, sizeof(dest))
 
