@@ -156,6 +156,10 @@ quick-test: $(objects) quick-test.o
 	@echo "    [LD]     $@"
 	$(Q)$(CC) $(CFLAGS) -o quick-test $(objects) quick-test.o $(LDFLAGS) $(LIBS)
 
+btrfs-crc: btrfs-crc.o $(libs)
+	@echo "    [LD]     $@"
+	$(Q)$(CC) $(CFLAGS) -o btrfs-crc $(objects) btrfs-crc.o $(LDFLAGS) $(LIBS)
+
 btrfs-convert: $(objects) convert.o
 	@echo "    [LD]     $@"
 	$(Q)$(CC) $(CFLAGS) -o btrfs-convert $(objects) convert.o -lext2fs -lcom_err $(LDFLAGS) $(LIBS)
