@@ -28,6 +28,15 @@ number of threads (1 ~ 32) to be used to process the image dump or restore.
 \fB\-o\fP
 use the old restore method, this does not fixup the chunk tree so the restored
 file system will not be able to be mounted.
+.TP
+\fB\-s\fP
+Sanitize the file names when generating the image. One \fB-s\fP means just
+generate random garbage, which means that the directory indexes won't match up
+since the hashes won't match with the garbage filenames. Using \fB-ss\fP will
+calculate a collision for the filename so that the hashes match, and if it
+can't calculate a collision then it will just generate garbage.  The collision
+calculator is very time and CPU intensive so only use it if you are having
+problems with your file system tree and need to have it mostly working.
 .SH AVAILABILITY
 .B btrfs-image
 is part of btrfs-progs. Btrfs is currently under heavy development,
