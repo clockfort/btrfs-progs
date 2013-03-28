@@ -3642,6 +3642,11 @@ int cmd_check(int argc, char **argv)
 	}
 
 	info = open_ctree_fs_info(argv[optind], bytenr, rw, 1);
+	if (!info) {
+		fprintf(stderr, "Couldn't open file system\n");
+		return -EIO;
+	}
+
 	uuid_unparse(info->super_copy.fsid, uuidbuf);
 	printf("Checking filesystem on %s\nUUID: %s\n", argv[optind], uuidbuf);
 
